@@ -46,6 +46,7 @@ public class LoginTestCases {
 		Thread.sleep(1000);
 		cl.clogin();
 		Thread.sleep(2000);
+		System.out.println("Login sucessfull");
 		
 	}
 	
