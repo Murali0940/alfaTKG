@@ -1,8 +1,5 @@
 package com.testScenarios;
 
-import java.time.Duration;
-
-import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -11,49 +8,61 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import com.baseclass.Complogin;
+import com.basemethods.BaseMethods;
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class LoginTestCases {
-	
-	WebDriver driver;
+
+	public WebDriver driver;
+	BaseMethods bm = new BaseMethods();
+	Complogin clogin = new Complogin();
+	ExtentTest test;
+	ExtentReports reports;
 
 	@BeforeTest
 	public void driverinfo() {
-		String URL = "https://www.alfadock-pack.com/";
-		
+
+		reports = new ExtentReports("./ExtentReports/Report.html", true);
+		test = reports.startTest("LoginTestCases");
+
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("--remote-allow-origins=*");
 		options.addArguments("start-maximized");
 		WebDriverManager.chromedriver().setup();
 		driver = new ChromeDriver(options);
-		driver.get(URL);
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-		Capabilities cap = ((ChromeDriver) driver).getCapabilities();
-		System.out.println("Chrome Browser Name is " + cap.getBrowserName());
-		System.out.println("Chrome Browser Version is " + cap.getBrowserVersion());
-		System.out.println("Operating PlatForm name  is " + cap.getPlatformName());
-		
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		bm.compURL(driver);
+		test.log(LogStatus.INFO, "driver info verified");
+
 	}
-	
-	@Test
+
+	@Test(enabled = true)
 	public void complogin() throws InterruptedException {
-		Complogin cl = new Complogin(driver);
-		cl.setCname("Atkgi");
-		Thread.sleep(1000);
-		cl.setCpass("1234");
-		Thread.sleep(1000);
-		cl.clogin();
-		Thread.sleep(2000);
-		System.out.println("Login sucessfull");
-		
+
+//		Thread.sleep(3000);
+
+		clogin.setCname(driver);
+		test.log(LogStatus.INFO, "Compname entered");
+		System.out.println("Compname entered");
+		clogin.setCpass(driver);
+		test.log(LogStatus.INFO, "password entered");
+		System.out.println("password entered");
+		clogin.clogin(driver);
+		test.log(LogStatus.INFO, "complogin sucessfull");
+
 	}
-	
+
 	@AfterTest
-	public void Close() throws InterruptedException {
-		Thread.sleep(2000);
-		driver.quit();
+	public void tearDown() throws InterruptedException {
+
+		reports.endTest(test);
+		reports.flush();
+		test.log(LogStatus.INFO, "report generated");
+		bm.browserclose(driver);
+
 	}
 
 }
