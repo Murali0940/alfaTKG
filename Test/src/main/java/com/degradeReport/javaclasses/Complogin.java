@@ -9,9 +9,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import com.baseclass.BaseMethods;
-import com.relevantcodes.extentreports.LogStatus;
 
 public class Complogin extends BaseMethods {
+
 
 	By cname = By.id("username");
 	By cpass = By.id("password");
@@ -28,12 +28,14 @@ public class Complogin extends BaseMethods {
 
 		// Wait until the element with id "myButton" is clickable
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("username")));
-		driver.findElement(By.id("username")).sendKeys("Atkgi");
+
+		driver.findElement(By.id("username")).sendKeys("Atkg");
 
 	}
 
 	public void setCpass(WebDriver driver) {
 		driver.findElement(By.id("password")).sendKeys("1234");
+		
 	}
 
 	public UserLogin clogin(WebDriver driver) throws InterruptedException {
@@ -41,6 +43,7 @@ public class Complogin extends BaseMethods {
 		driver.findElement(By.id("logmein")).click();
 		Thread.sleep(2000);
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+		
 		return new UserLogin();
 
 	}
@@ -49,17 +52,24 @@ public class Complogin extends BaseMethods {
 
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 		String expectedURL = "https://www.alfadock-pack.com/userlogin.html";
+		String actualURL = driver.getCurrentUrl();
 		Thread.sleep(2000);
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-		String actualURL = driver.getCurrentUrl();
+		// Create WebDriverWait instance with a timeout of 20 seconds
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+
+		// Wait until the element with id "myButton" is clickable
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("username")));
 		Assert.assertEquals(expectedURL, actualURL);
 
-		if (expectedURL == actualURL) {
+		if (expectedURL.equals(actualURL)) {
 			System.out.println("Login successful!");
 		} else {
 			System.out.println("Login failed!");
 		}
-
+		
 	}
+	
+	
 
 }

@@ -11,6 +11,7 @@ import org.testng.annotations.Test;
 import com.baseclass.BaseMethods;
 import com.baseclass.MailWithAttachment;
 import com.degradeReport.javaclasses.Complogin;
+import com.degradeReport.javaclasses.Homepage;
 import com.degradeReport.javaclasses.UserLogin;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
@@ -18,20 +19,21 @@ import com.relevantcodes.extentreports.LogStatus;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class LoginTestCases {
+public class DegradeReport {
 
 	public WebDriver driver;
 	BaseMethods bm = new BaseMethods();
 	Complogin clogin;
 	UserLogin ulogin;
-	ExtentTest test;
-	ExtentReports reports;
+	Homepage homepage;
+	
 
 	@BeforeTest
 	public void driverinfo() {
 
-		reports = new ExtentReports("F:\\ScreenShotsAndExtentReport\\ExtentReport\\Report.html", true);
-		test = reports.startTest("driver_info");
+		//reports = new ExtentReports("F:\\ScreenShotsAndExtentReport\\ExtentReport\\Report.html", true);
+		bm.setupExtentReport(driver);
+		bm.startTest(driver, "driver_info");
 
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("--remote-allow-origins=*");
@@ -39,54 +41,63 @@ public class LoginTestCases {
 		WebDriverManager.chromedriver().setup();
 		driver = new ChromeDriver(options);
 		bm.driverinfo(driver);
-		test.log(LogStatus.INFO, "driver info verified");
+		bm.logInfo(driver, "driver info verified");
+		
+		
 
 	}
 
-	@Test(priority = 1, enabled = true)
+	@Test(enabled = true, priority = 1,testName = "CompLogin")
 	public void complogin() throws InterruptedException {
-
-		test = reports.startTest("company Login");
+		
+		bm.startTest(driver, "comp_login_Page");
 		clogin = new Complogin();
 		clogin.setCname(driver);
-		test.log(LogStatus.INFO, "Compname entered");
 		System.out.println("Compname entered");
+		bm.logInfo(driver, "username entered in complogin");
 		clogin.setCpass(driver);
-		test.log(LogStatus.INFO, "password entered");
-		System.out.println("password entered");
+		bm.logInfo(driver, "password entered in complogin");
 		clogin.clogin(driver);
-		test.log(LogStatus.INFO, "complogin sucessfull");
+		bm.logInfo(driver, "complogin button clicked");
 		clogin.complogin_page_validate_url(driver);
-		test.log(LogStatus.INFO, "complogin validated");
-
 	}
 
-	@Test(priority = 2, enabled = true)
+	@Test(enabled = true, priority = 2,testName = "UserLogin")
 	public void userlogin() throws InterruptedException {
-		test = reports.startTest("Username Login");
+		bm.startTest(driver, "User_Login_page");
 		ulogin = new UserLogin();
 		ulogin.userPageValidate(driver);
 		ulogin.setUname(driver);
-		test.log(LogStatus.INFO, "username entered");
+		bm.logInfo(driver, "username entered");
 		ulogin.setUpass(driver);
-		test.log(LogStatus.INFO, "password entered");
+		bm.logInfo(driver, "password entered");
 		ulogin.ulogin(driver);
-		test.log(LogStatus.INFO, "login successfull");
+		bm.logInfo(driver, "login successfull");
 		ulogin.userlogin_page_validate_url(driver);
-		test.log(LogStatus.INFO, "userpage validated");
+		bm.logInfo(driver, "userpage validated");
+		
 
+	}
+	
+	@Test(priority = 3, enabled=true,testName = "searchPNG_in_Homepage")
+	public void searchpng() throws InterruptedException {
+		homepage = new Homepage();
+		homepage.searchPNG(driver);
+		
+		
+		
 	}
 
 	@AfterTest
 	public void tearDown() throws InterruptedException, EmailException {
 		
+		bm.endreport(driver);
+		bm.endTest(driver);
 		bm.browserclose(driver);
-		reports.endTest(test);
-		reports.flush();
 		System.out.println("Browser closed and report generated");
 		
-		MailWithAttachment mwa = new MailWithAttachment();
-		mwa.sendReport();		
+		//MailWithAttachment mwa = new MailWithAttachment();
+		//mwa.sendReport();		
 		
 		}
 		

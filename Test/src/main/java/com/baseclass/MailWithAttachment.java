@@ -20,7 +20,7 @@ public class MailWithAttachment {
 		email.setMsg("Dear sir,\r\n" + "Please find the attachment below");
 		EmailAttachment attachment = new EmailAttachment();
 		System.out.println("Attachment done in mail ");
-		attachment.setPath("C:\\Users\\DELL\\git\\alfaTKG\\Test\\ExtentReports\\Report.html");
+		attachment.setPath("F:\\ScreenShotsAndExtentReport\\ExtentReport\\Report.html");
 		attachment.setDisposition(EmailAttachment.ATTACHMENT);
 		email.addTo("murali@a-tkg.co.in");
 
