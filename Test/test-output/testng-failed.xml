@@ -5,8 +5,9 @@
     <classes>
       <class name="com.testScenarios.LoginTestCases">
         <methods>
-          <include name="complogin"/>
           <include name="driverinfo"/>
+          <include name="sendMail"/>
+          <include name="userlogin"/>
           <include name="tearDown"/>
         </methods>
       </class> <!-- com.testScenarios.LoginTestCases -->

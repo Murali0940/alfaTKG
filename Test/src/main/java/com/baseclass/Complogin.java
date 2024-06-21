@@ -4,7 +4,6 @@ import java.time.Duration;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import com.basemethods.BaseMethods;
@@ -29,15 +28,25 @@ public class Complogin extends BaseMethods{
 		driver.findElement(By.id("password")).sendKeys("1234");
 	}
 
-	public void clogin(WebDriver driver) throws InterruptedException {
+	public UserLogin clogin(WebDriver driver) throws InterruptedException {
 
 		driver.findElement(By.id("logmein")).click();
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		Thread.sleep(3000);
-		String expectedURL = driver.getCurrentUrl();
-		String actualURL = "https://www.alfadock-pack.com/userlogin.html";
-		Assert.assertEquals(expectedURL, actualURL);
+		Thread.sleep(2000);
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+		return new UserLogin();
 
+	}
+	
+	public void complogin_page_validate_url(WebDriver driver) throws InterruptedException {
+		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+		String expectedURL = "https://www.alfadock-pack.com/userlogin.html";
+		Thread.sleep(2000);
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+		String actualURL = driver.getCurrentUrl();
+		Assert.assertEquals(expectedURL, actualURL);
+		
+		
 	}
 	
 

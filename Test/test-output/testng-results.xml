@@ -1,21 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-06-19T14:22:54 IST" name="Default suite" finished-at="2024-06-19T14:23:09 IST" duration-ms="15417">
+  <suite started-at="2024-06-21T13:36:50 IST" name="Default suite" finished-at="2024-06-21T13:38:07 IST" duration-ms="77717">
     <groups>
     </groups>
-    <test started-at="2024-06-19T14:22:54 IST" name="Default test" finished-at="2024-06-19T14:23:09 IST" duration-ms="15417">
+    <test started-at="2024-06-21T13:36:50 IST" name="Default test" finished-at="2024-06-21T13:38:07 IST" duration-ms="77717">
       <class name="com.testScenarios.LoginTestCases">
-        <test-method is-config="true" signature="driverinfo()[pri:0, instance:com.testScenarios.LoginTestCases@7ce026d3]" started-at="2024-06-19T14:22:54 IST" name="driverinfo" finished-at="2024-06-19T14:22:58 IST" duration-ms="4712" status="PASS">
+        <test-method is-config="true" signature="driverinfo()[pri:0, instance:com.testScenarios.LoginTestCases@68c9133c]" started-at="2024-06-21T13:36:50 IST" name="driverinfo" finished-at="2024-06-21T13:37:25 IST" duration-ms="35640" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- driverinfo -->
-        <test-method signature="complogin()[pri:0, instance:com.testScenarios.LoginTestCases@7ce026d3]" started-at="2024-06-19T14:22:58 IST" name="complogin" finished-at="2024-06-19T14:23:05 IST" duration-ms="6116" status="PASS">
+        <test-method signature="complogin()[pri:1, instance:com.testScenarios.LoginTestCases@68c9133c]" started-at="2024-06-21T13:37:25 IST" name="complogin" finished-at="2024-06-21T13:37:32 IST" duration-ms="6461" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- complogin -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.testScenarios.LoginTestCases@7ce026d3]" started-at="2024-06-19T14:23:05 IST" name="tearDown" finished-at="2024-06-19T14:23:09 IST" duration-ms="4478" status="PASS">
+        <test-method signature="userlogin()[pri:2, instance:com.testScenarios.LoginTestCases@68c9133c]" started-at="2024-06-21T13:37:32 IST" name="userlogin" finished-at="2024-06-21T13:37:59 IST" duration-ms="27688" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- userlogin -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.testScenarios.LoginTestCases@68c9133c]" started-at="2024-06-21T13:37:59 IST" name="tearDown" finished-at="2024-06-21T13:38:07 IST" duration-ms="7877" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
