@@ -31,7 +31,6 @@ public class DegradeReport {
 	@BeforeTest
 	public void driverinfo() {
 
-		//reports = new ExtentReports("F:\\ScreenShotsAndExtentReport\\ExtentReport\\Report.html", true);
 		bm.setupExtentReport(driver);
 		bm.startTest(driver, "driver_info");
 

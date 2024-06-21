@@ -50,7 +50,7 @@
               <ul>
                 <li>
                   <a href="#" panel-name="test-xml-Default_suite" class="navigator-link ">
-                    <span>C:\Users\DELL\AppData\Local\Temp\testng-eclipse--704979853\testng-customsuite.xml</span>
+                    <span>C:\Users\DELL\AppData\Local\Temp\testng-eclipse-1840371315\testng-customsuite.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -103,12 +103,12 @@
                     <div class="method-list-content passed suite-Default_suite">
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Default_suite" title="com.testScenarios.LoginTestCases" class="method navigator-link" hash-for-method="complogin">complogin</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Default_suite" title="com.testScenarios.LoginTestCases" class="method navigator-link" hash-for-method="loginWithInValidCredentials">loginWithInValidCredentials</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Default_suite" title="com.testScenarios.LoginTestCases" class="method navigator-link" hash-for-method="userlogin">userlogin</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Default_suite" title="com.testScenarios.LoginTestCases" class="method navigator-link" hash-for-method="loginWithValidCredentials">loginWithValidCredentials</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-Default_suite -->
@@ -131,16 +131,16 @@
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="complogin">
-                  </a> <!-- complogin -->
-                  <span class="method-name">complogin</span>
+                  <a name="loginWithInValidCredentials">
+                  </a> <!-- loginWithInValidCredentials -->
+                  <span class="method-name">loginWithInValidCredentials</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="userlogin">
-                  </a> <!-- userlogin -->
-                  <span class="method-name">userlogin</span>
+                  <a name="loginWithValidCredentials">
+                  </a> <!-- loginWithValidCredentials -->
+                  <span class="method-name">loginWithValidCredentials</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
@@ -148,7 +148,7 @@
         </div> <!-- panel Default_suite -->
         <div panel-name="test-xml-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\DELL\AppData\Local\Temp\testng-eclipse--704979853\testng-customsuite.xml</span>
+            <span class="header-content">C:\Users\DELL\AppData\Local\Temp\testng-eclipse-1840371315\testng-customsuite.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -199,18 +199,18 @@ data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
 data.addRows(2);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'userlogin')
+data.setCell(0, 1, 'loginWithValidCredentials')
 data.setCell(0, 2, 'com.testScenarios.LoginTestCases')
-data.setCell(0, 3, 8650);
+data.setCell(0, 3, 6524);
 data.setCell(1, 0, 1)
-data.setCell(1, 1, 'complogin')
+data.setCell(1, 1, 'loginWithInValidCredentials')
 data.setCell(1, 2, 'com.testScenarios.LoginTestCases')
-data.setCell(1, 3, 6514);
+data.setCell(1, 3, 3315);
 window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 15 seconds</span>
+              <span class="suite-total-time">Total running time: 9 seconds</span>
               <div id="times-div-Default_suite">
               </div> <!-- times-div-Default_suite -->
             </div> <!-- times-div -->
@@ -237,22 +237,22 @@ return data;
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
               <div class="chronological-class-name">com.testScenarios.LoginTestCases</div> <!-- chronological-class-name -->
-              <div class="configuration-test before">
-                <span class="method-name">driverinfo</span>
+              <div class="configuration-class before">
+                <span class="method-name">setUp</span>
                 <span class="method-start">0 ms</span>
-              </div> <!-- configuration-test before -->
+              </div> <!-- configuration-class before -->
               <div class="test-method">
-                <span class="method-name">complogin</span>
-                <span class="method-start">3195 ms</span>
+                <span class="method-name">loginWithValidCredentials</span>
+                <span class="method-start">3841 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
-                <span class="method-name">userlogin</span>
-                <span class="method-start">9726 ms</span>
+                <span class="method-name">loginWithInValidCredentials</span>
+                <span class="method-start">10372 ms</span>
               </div> <!-- test-method -->
-              <div class="configuration-test after">
+              <div class="configuration-class after">
                 <span class="method-name">tearDown</span>
-                <span class="method-start">18378 ms</span>
-              </div> <!-- configuration-test after -->
+                <span class="method-start">13689 ms</span>
+              </div> <!-- configuration-class after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
       </div> <!-- main-panel-root -->
