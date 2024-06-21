@@ -5,10 +5,8 @@
     <classes>
       <class name="com.testScenarios.LoginTestCases">
         <methods>
-          <include name="complogin"/>
-          <include name="driverinfo"/>
-          <include name="userlogin"/>
-          <include name="searchpng"/>
+          <include name="loginWithInValidCredentials"/>
+          <include name="setUp"/>
           <include name="tearDown"/>
         </methods>
       </class> <!-- com.testScenarios.LoginTestCases -->
