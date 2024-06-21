@@ -8,10 +8,10 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import com.baseclass.Complogin;
-import com.baseclass.UserLogin;
-import com.basemethods.BaseMethods;
-import com.basemethods.MailWithAttachment;
+import com.baseclass.BaseMethods;
+import com.baseclass.MailWithAttachment;
+import com.degradeReport.javaclasses.Complogin;
+import com.degradeReport.javaclasses.UserLogin;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
@@ -30,7 +30,7 @@ public class LoginTestCases {
 	@BeforeTest
 	public void driverinfo() {
 
-		reports = new ExtentReports("./ExtentReports/Report.html", true);
+		reports = new ExtentReports("F:\\ScreenShotsAndExtentReport\\ExtentReport\\Report.html", true);
 		test = reports.startTest("driver_info");
 
 		ChromeOptions options = new ChromeOptions();
@@ -38,7 +38,7 @@ public class LoginTestCases {
 		options.addArguments("start-maximized");
 		WebDriverManager.chromedriver().setup();
 		driver = new ChromeDriver(options);
-		bm.compURL(driver);
+		bm.driverinfo(driver);
 		test.log(LogStatus.INFO, "driver info verified");
 
 	}

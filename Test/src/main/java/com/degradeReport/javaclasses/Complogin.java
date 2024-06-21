@@ -1,16 +1,18 @@
-package com.baseclass;
+package com.degradeReport.javaclasses;
 
 import java.time.Duration;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
-import com.basemethods.BaseMethods;
+import com.baseclass.BaseMethods;
+import com.relevantcodes.extentreports.LogStatus;
 
-public class Complogin extends BaseMethods{
-	
-	
+public class Complogin extends BaseMethods {
+
 	By cname = By.id("username");
 	By cpass = By.id("password");
 	By clogin = By.id("logmein");
@@ -20,6 +22,12 @@ public class Complogin extends BaseMethods{
 		String compname = driver.findElement(By.id("companylogin")).getText();
 		System.out.println(compname);
 		Thread.sleep(2000);
+
+		// Create WebDriverWait instance with a timeout of 10 seconds
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+
+		// Wait until the element with id "myButton" is clickable
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("username")));
 		driver.findElement(By.id("username")).sendKeys("Atkgi");
 
 	}
@@ -36,18 +44,22 @@ public class Complogin extends BaseMethods{
 		return new UserLogin();
 
 	}
-	
+
 	public void complogin_page_validate_url(WebDriver driver) throws InterruptedException {
-		
+
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 		String expectedURL = "https://www.alfadock-pack.com/userlogin.html";
 		Thread.sleep(2000);
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 		String actualURL = driver.getCurrentUrl();
 		Assert.assertEquals(expectedURL, actualURL);
-		
-		
+
+		if (expectedURL == actualURL) {
+			System.out.println("Login successful!");
+		} else {
+			System.out.println("Login failed!");
+		}
+
 	}
-	
 
 }
