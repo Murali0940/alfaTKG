@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.testScenarios.LoginTestCases">
+      <class name="com.testScenarios.DegradeReport">
         <methods>
-          <include name="userLoginWithValidCredentials"/>
-          <include name="setUp"/>
           <include name="tearDown"/>
+          <include name="searchpng"/>
+          <include name="driverinfo"/>
         </methods>
-      </class> <!-- com.testScenarios.LoginTestCases -->
+      </class> <!-- com.testScenarios.DegradeReport -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
