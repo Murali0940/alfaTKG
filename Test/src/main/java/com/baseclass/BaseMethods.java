@@ -94,5 +94,9 @@ public class BaseMethods {
     public WebElement waitForElementToBeVisible(By locator) {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
+    
+    public WebElement waitForVibilityOfElement(WebElement element) {
+        return wait.until(ExpectedConditions.visibilityOf(element));
+    }
 
 }

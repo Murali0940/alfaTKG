@@ -10,44 +10,73 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import com.baseclass.BaseMethods;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
-public class Homepage extends BaseMethods{
+public class Homepage extends BaseMethods {
 
-	BaseMethods bm;
+	BaseMethods bm = new BaseMethods();
 	JavascriptExecutor js;
 	Actions act;
-	
-	
-	public void searchPNG(WebDriver driver) throws InterruptedException {
 
-		startTest(driver, "searchPNG");
+	public String searchPNG(WebDriver driver, String name) throws InterruptedException {
+
+		// bm.startTest(driver, "searchPNG");
+
+		By searchbar = By.xpath(
+				"//img[@src='assets/qr-code.png']/following::input[@placeholder='検索' or @placeholder='Search' and @class='ng-untouched ng-pristine ng-valid ui-inputtext ui-corner-all ui-state-default ui-widget']");
+
 		// search bar
-		driver.findElement(By.xpath(
-				"//input[@class='ng-untouched ng-pristine ng-valid ui-inputtext ui-corner-all ui-state-default ui-widget']"))
-				.sendKeys(".png");
+		driver.findElement(searchbar).sendKeys(name);
 
-		logInfo(driver, "Png entered in search bar");
-		System.out.println("Png entered in search bar");
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		bm.wait(driver, Duration.ofSeconds(10));
 		// search button
 		WebElement searchbutton = driver.findElement(By.xpath("//img[@src='assets/ai-search.png']"));
-		logInfo(driver, "PNG file searched");
+
+		bm.wait(driver, Duration.ofSeconds(10));
 		Thread.sleep(2000);
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", searchbutton);
 		System.out.println("Clicked  search button");
-		logInfo(driver, "search button clicked");
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-		Thread.sleep(2000);
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-		WebElement element = wait
-				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//div[@class='imageDiv'])[1]")));
-		element.click();
-		logInfo(driver, "Result is displayed");
-		System.out.println("Click the first displayed file ");
-			}
+		// bm.logInfo(driver, "Clicked search button");
+		bm.wait(driver, Duration.ofSeconds(30));
+		bm.waitForElementToBeClickable(By.xpath("(//div[@class='imageDiv'])[1]"));
+
+		// double click
+		act = new Actions(driver);
+		By pngimage = By.xpath("(//div[@class='imageDiv'])[1]");
+		act.doubleClick(driver.findElement(pngimage)).build().perform();
+		// bm.logInfo(driver, "double clicked the file");
+		bm.wait(driver, Duration.ofSeconds(30));
+		// switching windows
+		ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
+		// go to tab 2
+		driver.switchTo().window(tabs2.get(1));
+		// bm.logInfo(driver, "switched to tab1");
+		String expectedURL = "https://www.alfadock-pack.com/ver10/#/drawing/9711/camera?filename=.png";
+		String actualURL = driver.getCurrentUrl();
+		Assert.assertEquals(expectedURL, actualURL);
+
+		if (expectedURL.equals(actualURL)) {
+			System.out.println("png viewer displayed ");
+			//bm.logPASS(driver, "Login successful!");
+		} else {
+			System.out.println("png viewer failed!");
+			//bm.logFAIL(driver, "Login failed!");
+		}
+
+		Thread.sleep(5000);
+		driver.close();
+		driver.switchTo().window(tabs2.get(0));
+		Thread.sleep(3000);
+		// Go to homepage
+		driver.findElement(By.xpath("//img[@src='assets/icons/logo.png']")).click();
+		System.out.println("alfadock logo clicked");
+		bm.wait(driver, Duration.ofSeconds(30));
+		return name;
+
+	}
 }

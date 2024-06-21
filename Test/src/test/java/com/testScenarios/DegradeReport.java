@@ -81,7 +81,8 @@ public class DegradeReport {
 	@Test(priority = 3, enabled=true,testName = "searchPNG_in_Homepage")
 	public void searchpng() throws InterruptedException {
 		homepage = new Homepage();
-		homepage.searchPNG(driver);
+		bm.startTest(driver, "searchPNG");
+		homepage.searchPNG(driver, ".png");
 		
 		
 		

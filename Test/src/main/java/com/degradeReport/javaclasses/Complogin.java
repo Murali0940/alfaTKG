@@ -29,7 +29,7 @@ public class Complogin extends BaseMethods {
 		// Wait until the element with id "myButton" is clickable
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("username")));
 
-		driver.findElement(By.id("username")).sendKeys("Atkg");
+		driver.findElement(By.id("username")).sendKeys("Atkgi");
 
 	}
 
